@@ -2,6 +2,7 @@
   "_comment": "Minimum Ubuntu VM unattended installation",
   "builders": [
     {
+      "type": "virtualbox-iso",
       "boot_command": [
         "{{ user `boot_command_prefix` }}",
         "/install/vmlinuz noapic ",
@@ -40,7 +41,6 @@
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
       "ssh_wait_timeout": "10000s",
-      "type": "virtualbox-iso",
       "vboxmanage": [
         [
           "modifyvm",
@@ -93,6 +93,7 @@
       ],
       "virtualbox_version_file": ".vbox_version",
       "vm_name": "{{user `vm_name`}}",
+      "keep_registered": "true",
       "skip_export": "true"
     }
   ],
