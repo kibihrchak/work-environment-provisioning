@@ -1,0 +1,37 @@
+{
+  "_comment": "Provision minimum Ubuntu VM unattended installation",
+  "builders": [
+    {
+      "type": "virtualbox-vm",
+      "vm_name": "{{user `vm_name`}}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "headless": "{{ user `headless` }}",
+      "attach_snapshot": "{{ user `attach_snapshot` }}",
+      "target_snapshot": "{{ user `target_snapshot` }}",
+      "ssh_wait_timeout": "10000s",
+      "skip_export": "true"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": "true",
+      "environment_vars": [
+        "UPDATE={{user `update`}}"
+      ],
+      "scripts": [
+        "scripts/hello.sh"
+      ]
+    }
+  ],
+  "variables": {
+    "json_name": "provision-ubuntu-vm",
+    "headless": "false",
+    "ssh_password": "vagrant",
+    "ssh_username": "vagrant",
+    "attach_snapshot": "base",
+    "target_snapshot": "provisioned",
+    "update": "false"
+  }
+}
