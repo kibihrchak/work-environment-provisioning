@@ -1,0 +1,6 @@
+{
+  "_comment": "Config variables for exporting given Ubuntu VM installation as an Vagrant box",
+  "vm_name": "ubuntu1910-desktop",
+  "version": "0.1.0",
+  "vagrantfile_template": "ubuntu1910-desktop.tpl"
+}
