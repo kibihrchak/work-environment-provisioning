@@ -10,19 +10,17 @@
       "attach_snapshot": "{{ user `attach_snapshot` }}",
       "target_snapshot": "{{ user `target_snapshot` }}",
       "ssh_wait_timeout": "10000s",
-      "skip_export": "true"
+      "skip_export": "true",
+      "post_shutdown_delay": "1m",
+      "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now"
     }
   ],
   "provisioners": [
     {
       "type": "shell",
       "expect_disconnect": "true",
-      "environment_vars": [
-        "UPDATE={{user `update`}}"
-      ],
-      "scripts": [
-        "scripts/hello.sh"
-      ]
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": "{{ user `provision_scripts` }}"
     }
   ],
   "variables": {

@@ -1,4 +1,5 @@
 {
   "_comment": "Config variables for provisioning minimum Ubuntu VM unattended installation",
-  "vm_name": "ubuntu1910-desktop"
+  "vm_name": "ubuntu1910-desktop",
+  "provision_scripts": "scripts/install-xfce4.sh"
 }
