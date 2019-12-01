@@ -4,7 +4,7 @@ SSH_USERNAME=${SSH_USERNAME:-vagrant}
 
 function install_open_vm_tools() {
   echo "==> Installing Open VM Tools"
-  apt-get install -y open-vm-tools open-vm-tools-desktop
+  apt install -y open-vm-tools open-vm-tools-desktop
 
   # Add /mnt/hgfs so the mount works automatically with Vagrant
   mkdir /mnt/hgfs
@@ -13,7 +13,7 @@ function install_open_vm_tools() {
 function install_vmware_tools() {
   echo "==> Installing VMware Tools"
   # Assuming the following packages are installed
-  apt-get install -y build-essential linux-headers-$(uname -r) perl
+  apt install -y build-essential linux-headers-$(uname -r) perl
 
   cd /tmp
   mkdir -p /mnt/cdrom
