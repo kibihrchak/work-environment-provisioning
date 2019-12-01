@@ -3,27 +3,25 @@
 SSH_USER=${SSH_USERNAME:-vagrant}
 DISK_USAGE_BEFORE_CLEANUP=$(df -h)
 
+#   [TODO] This may go to export
 # Make sure udev does not block our network - http://6.ptmc.org/?p=164
 echo "==> Cleaning up udev rules"
 rm -rf /dev/.udev/
-rm /lib/udev/rules.d/75-persistent-net-generator.rules
+rm -f /lib/udev/rules.d/75-persistent-net-generator.rules
 
+#   [TODO] This may go to export
 echo "==> Cleaning up leftover dhcp leases"
-if [ -d "/var/lib/dhcp" ]; then
-    rm /var/lib/dhcp/*
-fi
+rm -rf /var/lib/dhcp/*
 
-# Add delay to prevent "vagrant reload" from failing
+#   [TODO] This may go to export
+echo "==> Add delay to prevent \"vagrant reload\" from failing"
+if [ -f /etc/network/interfaces ]
+then
 echo "pre-up sleep 2" >>/etc/network/interfaces
+fi
 
 echo "==> Cleaning up tmp"
 rm -rf /tmp/*
-
-echo "==> Cleanup apt cache"
-apt-get -y autoremove --purge
-apt-get -y autoclean
-apt-get -y clean
-rm -rf /var/lib/apt/lists/*
 
 echo "==> Remove Bash history"
 unset HISTFILE
@@ -39,6 +37,5 @@ echo "==> Clearing last login information"
 >/var/log/wtmp
 >/var/log/btmp
 
-# Make sure we wait until all the data is written to disk, otherwise
-# Packer might quite too early before the large files are deleted
+echo "==> Sync to avoid non-consistent data on Packer quit"
 sync
