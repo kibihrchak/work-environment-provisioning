@@ -13,4 +13,7 @@ if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
     umount /mnt
     rm /home/${SSH_USER}/VBoxGuestAdditions_$VBOX_VERSION.iso
     rm /home/${SSH_USER}/.vbox_version
+
+    #   [TODO] Add user to vboxsf group
+    #sudo usermod -a -G vboxsf USER
 fi
