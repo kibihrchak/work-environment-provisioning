@@ -91,6 +91,14 @@
           "on"
         ]
       ],
+      "vboxmanage_post": [
+        [
+          "snapshot",
+          "{{.Name}}",
+          "take",
+          "{{user `snapshot_name` }}"
+        ]
+      ],
       "virtualbox_version_file": ".vbox_version",
       "vm_name": "{{user `vm_name`}}",
       "keep_registered": "true",
@@ -131,6 +139,7 @@
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "time_zone": "UTC",
-    "update": "false"
+    "update": "false",
+    "snapshot_name": "base"
   }
 }
