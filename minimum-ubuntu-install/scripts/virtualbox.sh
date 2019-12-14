@@ -14,6 +14,5 @@ if [[ $PACKER_BUILDER_TYPE =~ virtualbox ]]; then
     rm /home/${SSH_USER}/VBoxGuestAdditions_$VBOX_VERSION.iso
     rm /home/${SSH_USER}/.vbox_version
 
-    #   [TODO] Add user to vboxsf group
-    #sudo usermod -a -G vboxsf USER
+    usermod -a -G vboxsf ${SSH_USER}
 fi
