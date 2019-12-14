@@ -12,14 +12,15 @@
       "ssh_wait_timeout": "10000s",
       "skip_export": "true",
       "post_shutdown_delay": "1m",
+      "guest_additions_mode": "disable",
       "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now"
     }
   ],
   "provisioners": [
     {
       "type": "file",
-      "source": "{{ user `config_archive_path` }}/config.tgz",
-      "destination": "/tmp/config.tgz"
+      "source": "{{ user `json_name` }}/files",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
@@ -29,7 +30,11 @@
         "SSH_PASSWORD={{user `ssh_password`}}"
       ],
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
-      "scripts": "{{ user `provision_scripts` }}"
+      "scripts": [
+        "scripts/update+upgrade.sh",
+        "{{ user `json_name` }}/scripts/install-xfce4.sh",
+        "{{ user `json_name` }}/scripts/install-doublecmd.sh"
+      ]
     }
   ],
   "variables": {
