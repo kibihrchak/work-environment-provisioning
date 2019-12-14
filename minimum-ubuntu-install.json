@@ -125,7 +125,8 @@
       ],
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "{{ user `json_name` }}/scripts/update.sh",
+        "{{ user `json_name` }}/scripts/update-disable.sh",
+        "scripts/update.sh",
         "{{ user `json_name` }}/scripts/vagrant.sh",
         "{{ user `json_name` }}/scripts/sshd.sh",
         "{{ user `json_name` }}/scripts/vmware.sh",
