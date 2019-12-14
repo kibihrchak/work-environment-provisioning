@@ -3,7 +3,7 @@
 echo "==> Updating list of repositories"
 apt -y update
 
-if [[ $UPDATE  =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
+if [[ $UPGRADE  =~ true || $UPGRADE =~ 1 || $UPGRADE =~ yes ]]; then
     echo "==> Performing dist-upgrade (all packages and kernel)"
     apt -y dist-upgrade --force-yes
     reboot
