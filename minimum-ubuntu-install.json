@@ -89,6 +89,12 @@
           "{{.Name}}",
           "--usbehci",
           "on"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--graphicscontroller",
+          "vmsvga"
         ]
       ],
       "vboxmanage_post": [
