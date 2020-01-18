@@ -11,9 +11,10 @@ connecting steps, for example -
 1.  Minimum Ubuntu installation in VM - Creates a VM with `base`
     snapshot.
 2.  Provisioning minimum VM - Install needed packages, config files,
-    etc. Starts from `base` snapshot, creates `provisioned` snapshot.
-3.  Prepare for export, perform export - Do cleanup, minimization, then
-    export VM to OVF and to Vagrant Box.
+    etc. Process starts from `base` snapshot, going through intermediate
+    snapshots, and finally creates `provisioned` snapshot.
+3.  Prepare for export, perform export - Do cleanup, minimization of
+    `provisioned` snapshot, then export VM to OVF and to Vagrant Box.
 
 This is done in order to speed up learning on Packer use, but then too
 to eliminate duplicated provisioning for different VMs that share a
