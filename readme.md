@@ -67,6 +67,12 @@ packer build \
 This sample also contains an additional configuration var,
 `buildroot_archive_path`.
 
+#### `minimum-ubuntu-install.json`
+
+For building up the VM, it is useful to have a shared directory
+attached. So, this template requires specifying a shared directory to be
+mounted to the VM, host path specified as a `shared_folder_path` var.
+
 ## [TODO] Contributing
 
 ## [TODO] Versioning

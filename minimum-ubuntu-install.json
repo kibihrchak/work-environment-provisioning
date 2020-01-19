@@ -95,6 +95,16 @@
           "{{.Name}}",
           "--graphicscontroller",
           "vmsvga"
+        ],
+        [
+          "sharedfolder",
+          "add",
+          "{{.Name}}",
+          "--name",
+          "virtualbox",
+          "--hostpath",
+          "{{user `shared_folder_path`}}",
+          "--automount"
         ]
       ],
       "vboxmanage_post": [
@@ -147,6 +157,7 @@
     "ssh_username": "vagrant",
     "time_zone": "UTC",
     "upgrade": "false",
-    "snapshot_name": "base"
+    "snapshot_name": "base",
+    "shared_folder_path": null
   }
 }
