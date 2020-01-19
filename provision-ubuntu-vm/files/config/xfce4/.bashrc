@@ -117,9 +117,5 @@ if ! shopt -oq posix; then
 fi
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  if systemctl -q is-active graphical.target; then
-    exec startx
-  else
-    echo "Execute startx to start GUI"
-  fi
+  echo "Execute startx to start GUI"
 fi
