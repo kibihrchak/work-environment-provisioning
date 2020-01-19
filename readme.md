@@ -50,6 +50,23 @@ Same for 18.04
 packer build -var-file=minimum-ubuntu-install/var-files/ubuntu1804-desktop.json minimum-ubuntu-install.json
 ```
 
+#### Customizing Build
+
+For intermediate provisioning, snapshot names have to be changed from
+the default ones (`base` as an attach, `provisioned` as a target
+snapshot). Sample - 
+
+```
+packer build \
+    -var 'attach_snapshot=xfce' -var 'target_snapshot=rpi' \
+    -var 'buildroot_archive_path=//media/sf_virtualbox/buildroot.tgz' \
+    -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
+    provision-ubuntu-vm_rpi-buildroot.json
+```
+
+This sample also contains an additional configuration var,
+`buildroot_archive_path`.
+
 ## [TODO] Contributing
 
 ## [TODO] Versioning
