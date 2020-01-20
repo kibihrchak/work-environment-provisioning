@@ -1,0 +1,1 @@
+root=/dev/nfs nfsroot=192.168.1.1:/nfs/rpi,vers=3 rw ip=dhcp rootwait elevator=deadline console=serial0,115200
