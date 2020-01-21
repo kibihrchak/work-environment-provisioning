@@ -1,7 +1,7 @@
 # Work Environment Provisioning
 
-A set of Packer templates and accompanying files to provision an Ubuntu
-VM work environment in several stages with snapshots in-between.
+A set of Packer templates and accompanying files to provision a needed
+Ubuntu VM work environment step-by-step.
 
 ## Overview
 
@@ -12,15 +12,47 @@ connecting steps, for example -
     snapshot.
 2.  Provisioning minimum VM - Install needed packages, config files,
     etc. Process starts from `base` snapshot, going through intermediate
-    snapshots, and finally creates `provisioned` snapshot.
+    custom-named snapshots, and finally creates `provisioned` snapshot.
 3.  Prepare for export, perform export - Do cleanup, minimization of
     `provisioned` snapshot, then export VM to OVF and to Vagrant Box.
 
-This is done in order to speed up learning on Packer use, but then too
-to eliminate duplicated provisioning for different VMs that share a
-common basis.
+This staging is done in order to:
 
-### [TODO] File Structure
+1.  Speed up learning how to use Packer - Snapshots allow for faster
+    retrying of a certain provisioning phase.
+2.  To eliminate duplicated provisioning for different VMs that share a
+    common basis.
+
+### Components
+
+1.  Packer template - Specifies the particular provisioning phase.
+2.  Machine type - Set of Packer variables that describe a particular
+    machine (eg. Ubuntu 19.10) for the given Packer template. Used to
+    perform different provisioning phases on the same machine.
+3.  VM name - Name for the VM on which Packer will operate. Defaults to
+    the machine type.
+
+### File Structure
+
+1.  Packer templates are provided as `.json` files in the repo root.
+    They may be grouped through naming convention (see bellow on that).
+2.  You can find a template-accompanying stuff in the repo root: 
+    1.  `scripts` - Scripts to be executed during provisioning, as
+        needed by a given template.
+    2.  `files` - Files that may be deployed on the target, either by
+        these scripts, or manually.
+3.  Each template (or a template group) has a same-named directory with
+    accompanying stuff, as described for the repo root. In addition,
+    there is:
+    3.  `var-files` - Machine types.
+4.  VM disks are located in `output` directory
+5.  Output is generated in the following directories:
+    1.  `output-<machine-name>` for OVA files.
+    2.  `box` for Vagrant boxes.
+
+Packer templates are grouped through a naming scheme -
+`<category>_<name>.json`. This is a pure syntactical thing used to more
+easily find necessary files.
 
 ## Getting Started
 
