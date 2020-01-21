@@ -40,14 +40,18 @@ Run Packer by providing:
 
 Example for Ubuntu 19.10 -
 
-```
-packer build -var-file=minimum-ubuntu-install/var-files/ubuntu1910-desktop.json minimum-ubuntu-install.json
+```bash
+packer build \
+    -var-file=minimum-ubuntu-install/var-files/ubuntu1910-desktop.json \
+    minimum-ubuntu-install.json
 ```
 
 Same for 18.04
 
-```
-packer build -var-file=minimum-ubuntu-install/var-files/ubuntu1804-desktop.json minimum-ubuntu-install.json
+```bash
+packer build \
+    -var-file=minimum-ubuntu-install/var-files/ubuntu1804-desktop.json \
+    minimum-ubuntu-install.json
 ```
 
 #### Customizing Build
@@ -56,7 +60,7 @@ For intermediate provisioning, snapshot names have to be changed from
 the default ones (`base` as an attach, `provisioned` as a target
 snapshot). Sample - 
 
-```
+```bash
 packer build \
     -var 'attach_snapshot=xfce' -var 'target_snapshot=rpi' \
     -var 'buildroot_archive_path=//media/sf_virtualbox/buildroot.tgz' \
@@ -79,7 +83,7 @@ mounted to the VM, host path specified as a `shared_folder_path` var.
 
 ## Authors
 
-*   **Marko Oklobdzija** - [GitHub](https://github.com/kibihrchak)
+*   **Marko Oklobdzija** - <https://github.com/kibihrchak>
 
 See also the list of [GitHub
 contributors](https://github.com/kibihrchak/work-environment-provisioning/contributors)
@@ -89,5 +93,7 @@ who participated in this project.
 
 ## Acknowledgments
 
-*   Base Packer templates by fasmat - [Repo on GitHub](https://github.com/fasmat/ubuntu)
-*   Readme file basis by PurpleBooth - [Gist on GitHub](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+*   Base Packer templates by fasmat -
+    <https://github.com/fasmat/ubuntu>
+*   Readme file basis by PurpleBooth -
+    <https://gist.github.com/PurpleBooth/109311bb0361f32d87a2>
