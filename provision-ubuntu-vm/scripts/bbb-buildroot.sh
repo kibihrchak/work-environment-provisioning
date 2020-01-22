@@ -34,6 +34,7 @@ if [ -z "${BUILDROOT_ARCHIVE_PATH}" ]
 then
     cd /tmp
     wget -c \
+        --progress=dot:mega \
         "http://buildroot.org/downloads/${BUILDROOT_ARCHIVE_NAME}" \
         "http://buildroot.org/downloads/${BUILDROOT_ARCHIVE_NAME}.sign"
     grep MD5 "${BUILDROOT_ARCHIVE_NAME}.sign" | cut -d' ' -f2- | md5sum -c
