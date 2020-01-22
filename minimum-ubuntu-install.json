@@ -140,8 +140,7 @@
         "{{ user `json_name` }}/scripts/vagrant.sh",
         "{{ user `json_name` }}/scripts/sshd.sh",
         "{{ user `json_name` }}/scripts/vmware.sh",
-        "{{ user `json_name` }}/scripts/virtualbox.sh",
-        "scripts/cleanup.sh"
+        "{{ user `json_name` }}/scripts/virtualbox.sh"
       ]
     }
   ],
