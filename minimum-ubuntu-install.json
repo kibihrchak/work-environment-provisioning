@@ -135,12 +135,12 @@
       ],
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "{{ user `json_name` }}/scripts/update-disable.sh",
-        "scripts/update+upgrade.sh",
-        "{{ user `json_name` }}/scripts/vagrant.sh",
-        "{{ user `json_name` }}/scripts/sshd.sh",
-        "{{ user `json_name` }}/scripts/vmware.sh",
-        "{{ user `json_name` }}/scripts/virtualbox.sh"
+        "{{ user `json_name` }}/scripts/su_update-disable.sh",
+        "scripts/su_update+upgrade.sh",
+        "{{ user `json_name` }}/scripts/su_vagrant.sh",
+        "{{ user `json_name` }}/scripts/su_sshd.sh",
+        "{{ user `json_name` }}/scripts/su_vmware.sh",
+        "{{ user `json_name` }}/scripts/su_virtualbox.sh"
       ]
     }
   ],
