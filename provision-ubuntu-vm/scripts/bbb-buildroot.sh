@@ -11,7 +11,7 @@ sudo apt install -y tftpd-hpa nfs-kernel-server --no-install-recommends
 echo "==> Installing Buildroot-needed packages"
 sudo apt install -y \
     sed make binutils gcc g++ bash patch libncurses-dev \
-    gzip bzip2 perl tar cpio unzip rsync wget bc \
+    gzip bzip2 perl tar cpio unzip rsync wget bc git \
     --no-install-recommends
 
 echo "==> Installing serial console, configuring user"
