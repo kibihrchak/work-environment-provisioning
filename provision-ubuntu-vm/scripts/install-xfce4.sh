@@ -13,7 +13,7 @@ echo "==> Installing themes, icons"
 apt install -y elementary-xfce-icon-theme greybird-gtk-theme --no-install-recommends
 
 echo "==> Removing unused stuff"
-apt remove --purge humanity-icon-theme
+apt remove -y --purge humanity-icon-theme
 
 echo "==> Copying configuration"
 cp -a /tmp/files/config/xfce4/. ~
