@@ -6,16 +6,20 @@ BUILDROOT_BASE_NAME="buildroot-${BUILDROOT_VERSION}"
 BUILDROOT_ARCHIVE_NAME="${BUILDROOT_BASE_NAME}.tar.gz"
 
 echo "==> Installing file servers (NFS, TFTP)"
-sudo apt install -y dnsmasq nfs-kernel-server --no-install-recommends
+sudo DEBIAN_FRONTEND=noninteractive \
+    apt install -y --no-install-recommends \
+    dnsmasq nfs-kernel-server
 
 echo "==> Installing Buildroot-needed packages"
-sudo apt install -y \
+sudo DEBIAN_FRONTEND=noninteractive \
+    apt install -y --no-install-recommends \
     sed make binutils gcc g++ bash patch libncurses-dev \
-    gzip bzip2 perl tar cpio unzip rsync wget bc \
-    --no-install-recommends
+    gzip bzip2 perl tar cpio unzip rsync wget bc
 
 echo "==> Installing serial console, configuring user"
-sudo apt install -y picocom --no-install-recommends
+sudo DEBIAN_FRONTEND=noninteractive \
+    apt install -y --no-install-recommends \
+    picocom
 sudo usermod -a -G dialout ${SSH_USER}
 
 echo "==> Configuring system"
