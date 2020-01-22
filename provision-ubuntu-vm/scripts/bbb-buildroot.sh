@@ -38,7 +38,6 @@ then
         "http://buildroot.org/downloads/${BUILDROOT_ARCHIVE_NAME}.sign"
     grep MD5 "${BUILDROOT_ARCHIVE_NAME}.sign" | cut -d' ' -f2- | md5sum -c
     tar -ax \
-        --owner "${SSH_USER}" \
         -f "${BUILDROOT_ARCHIVE_NAME}" \
         -C ~/buildroot/
     rm "${BUILDROOT_ARCHIVE_NAME}"
