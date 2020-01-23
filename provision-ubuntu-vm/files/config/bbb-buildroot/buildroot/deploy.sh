@@ -2,15 +2,13 @@
 
 cd ~/buildroot
 
-sudo mount -t auto -o ro build/images/rootfs.ext4 /mnt/rpi/rfs
-sudo mount -t auto -o ro build/images/boot.vfat /mnt/rpi/boot
+sudo rm -rf /nfs/bbb/*
+sudo rm -rf /tftp/bbb/*
 
-sudo rsync -xa --delete /mnt/rpi/boot/ /tftp/rpi
-sudo rsync -xa --delete /mnt/rpi/rfs/ /nfs/rpi
+sudo tar -xf build/images/rootfs.tar -C /nfs/bbb
 
-sudo umount /mnt/rpi/rfs
-sudo umount /mnt/rpi/boot
-
-sudo cp overlay/*.txt /tftp/rpi
+sudo mkdir -p /tftp/bbb/dtbs
+sudo cp build/images/zImage /tftp/bbb
+sudo cp build/build/linux-5.3.14/arch/arm/boot/dts/am335x-boneblack.dtb /tftp/bbb/dtbs
 
 sync
