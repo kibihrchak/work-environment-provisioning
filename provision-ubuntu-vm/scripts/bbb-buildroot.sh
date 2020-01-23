@@ -24,6 +24,7 @@ sudo usermod -a -G dialout ${SSH_USER}
 
 echo "==> Configuring system"
 sudo cp -R /tmp/files/config/bbb-buildroot/root/. /
+cp -R /tmp/files/config/wget/. ~
 sudo mkdir -p /nfs/bbb /tftp/bbb
 sudo mkdir -p /mnt/bbb/boot /mnt/bbb/rfs
 
