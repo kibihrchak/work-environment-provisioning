@@ -55,8 +55,8 @@ then
     echo "==> Executing build"
     ~/buildroot/build.sh
 else
-    tar -xzf "${BUILDROOT_ARCHIVE_PATH}" -C ~/buildroot \
-        --checkpoint 1000
+    tar --checkpoint 10000 -xz \
+        -f "${BUILDROOT_ARCHIVE_PATH}" -C ~/buildroot
 fi
 
 echo "==> Deploying build to file servers"
