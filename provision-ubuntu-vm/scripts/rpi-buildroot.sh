@@ -33,9 +33,9 @@ cp -R /tmp/files/config/rpi-buildroot/buildroot/. \
     ~/buildroot/
 chmod 755 ~/buildroot/*.sh
 
-echo "==> Getting Buildroot"
 if [ -z "${BUILDROOT_ARCHIVE_PATH}" ]
 then
+    echo "==> Getting Buildroot from source"
     cd /tmp
     wget -c \
         --progress=dot:mega \
@@ -55,6 +55,7 @@ then
     echo "==> Executing build"
     ~/buildroot/build.sh
 else
+    echo "==> Getting prebuilt Buildroot archive"
     tar --checkpoint 10000 -xz \
         -f "${BUILDROOT_ARCHIVE_PATH}" -C ~/buildroot
 fi
