@@ -56,7 +56,7 @@ then
     ~/buildroot/build.sh
 else
     echo "==> Getting prebuilt Buildroot archive"
-    tar --checkpoint 10000 -xz \
+    tar --checkpoint=10000 -xz \
         -f "${BUILDROOT_ARCHIVE_PATH}" -C ~/buildroot
 fi
 
