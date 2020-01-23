@@ -1,5 +1,2 @@
 #   Use LF because files here will be uploaded to Ubuntu machine
-* eol=lf
-
-#   Except for this very file
-/.gitattributes !eol
+/files/** eol=lf
