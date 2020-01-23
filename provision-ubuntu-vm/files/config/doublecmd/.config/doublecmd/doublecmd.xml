@@ -124,56 +124,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename=".themes">/home/vagrant/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/</Path>
-                  <Path Filename=".themes">/home/vagrant/</Path>
-                  <Path Filename="dark">/home/vagrant/.themes/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/xfwm4/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="bottom-right-active.xpm">/home/vagrant/.themes/dark/xfwm4/</Path>
-                  <Path Filename="xfwm4-a11y">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/xfwm4-a11y/</Path>
-                  <Path Filename="xfwm4-compact">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/xfwm4-compact/</Path>
-                  <Path Filename="xfwm4-a11y">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/xfwm4-a11y/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="themerc">/home/vagrant/.themes/dark/xfwm4/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="dark">/home/vagrant/.themes/</Path>
-                  <Path Filename=".config">/home/vagrant/</Path>
-                  <Path Filename="xfce4">/home/vagrant/.config/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.config/xfce4/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/xfwm4/</Path>
-                  <Path Filename="xfconf">/home/vagrant/.config/xfce4/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/xfconf/</Path>
-                  <Path Filename="xfconf">/home/vagrant/.config/xfce4/</Path>
-                  <Path Filename="xfce-perchannel-xml">/home/vagrant/.config/xfce4/xfconf/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/xfconf/xfce-perchannel-xml/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/xfconf/</Path>
-                  <Path Filename="panel">/home/vagrant/.config/xfce4/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/panel/</Path>
-                  <Path Filename="desktop">/home/vagrant/.config/xfce4/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/desktop/</Path>
-                  <Path Filename="..">/home/vagrant/.config/xfce4/</Path>
-                  <Path Filename="..">/home/vagrant/.config/</Path>
-                  <Path Filename=".bash_logout">/home/vagrant/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/gtk-2.0/apps/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/gtk-2.0/</Path>
-                  <Path Filename="gtk-2.0">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="dark">/home/vagrant/.themes/</Path>
-                  <Path Filename=".themes">/home/vagrant/</Path>
-                  <Path Filename="dark">/home/vagrant/.themes/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/xfwm4/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/dark/</Path>
-                  <Path Filename="Xfce-Simple-Dark">/home/vagrant/.themes/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="Xfce-Simple-Dark">/home/vagrant/.themes/</Path>
-                  <Path Filename="..">/media/sf_virtualbox/</Path>
-                  <Path Filename="sf_virtualbox">/media/</Path>
-                  <Path Filename="..">/media/sf_virtualbox/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -197,39 +147,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="..">/usr/lib/doublecmd/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="OneColor XFCE orange">/home/vagrant/.themes/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/OneColor XFCE orange/</Path>
-                  <Path Filename="OneColor XFCE">/home/vagrant/.themes/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/OneColor XFCE/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/OneColor XFCE/xfwm4/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/OneColor XFCE/</Path>
-                  <Path Filename="light">/home/vagrant/.themes/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/light/</Path>
-                  <Path Filename="OneColor XFCE">/home/vagrant/.themes/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/OneColor XFCE/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/OneColor XFCE/xfwm4/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/OneColor XFCE/</Path>
-                  <Path Filename="light">/home/vagrant/.themes/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/light/</Path>
-                  <Path Filename="OneColor XFCE">/home/vagrant/.themes/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/OneColor XFCE/</Path>
-                  <Path Filename="Xfce-Simple-Dark">/home/vagrant/.themes/</Path>
-                  <Path Filename="xfwm4">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/xfwm4/</Path>
-                  <Path Filename="gtk-3.20">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/gtk-3.20/</Path>
-                  <Path Filename="gtk-3.20">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/gtk-3.20/</Path>
-                  <Path Filename="gtk-3.0">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/gtk-3.0/</Path>
-                  <Path Filename="gtk-2.0">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="..">/home/vagrant/.themes/Xfce-Simple-Dark/gtk-2.0/</Path>
-                  <Path Filename="gtk-3.0">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="gtk.css">/home/vagrant/.themes/Xfce-Simple-Dark/gtk-3.0/</Path>
-                  <Path Filename="gtk-3.0">/home/vagrant/.themes/Xfce-Simple-Dark/</Path>
-                  <Path Filename="Xfce-Simple-Dark">/home/vagrant/.themes/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -605,7 +522,9 @@
   <IgnoreList Enabled="False">
     <IgnoreListFile>%DC_CONFIG_PATH%/ignorelist.txt</IgnoreListFile>
   </IgnoreList>
-  <DirectoryHotList/>
+  <DirectoryHotList>
+    <HotDir Name="home" Path="/home/vagrant/"/>
+  </DirectoryHotList>
   <Viewer>
     <PreviewVisible>False</PreviewVisible>
     <ImageStretch>False</ImageStretch>
