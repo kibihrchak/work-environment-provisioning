@@ -24,7 +24,6 @@ sudo usermod -a -G dialout ${SSH_USER}
 
 echo "==> Configuring system"
 sudo cp -R /tmp/files/config/bbb-buildroot/root/. /
-cp -R /tmp/files/config/wget/. ~
 sudo mkdir -p /nfs/bbb /tftp/bbb
 sudo mkdir -p /mnt/bbb/boot /mnt/bbb/rfs
 
@@ -36,6 +35,9 @@ chmod 755 ~/buildroot/*.sh
 
 if [ -z "${BUILDROOT_ARCHIVE_PATH}" ]
 then
+    echo "==> Set up wget (assuming not configured before)"
+    echo "dot_bytes=100k" > ~/.wgetrc
+
     echo "==> Getting Buildroot from source"
     cd /tmp
     wget -c \
@@ -55,6 +57,9 @@ then
 
     echo "==> Executing build"
     ~/buildroot/build.sh
+
+    echo "==> Restore wget config"
+    rm ~/.wgetrc
 else
     echo "==> Getting prebuilt Buildroot archive"
     tar --checkpoint=10000 -xz \
