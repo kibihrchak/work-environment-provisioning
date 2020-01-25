@@ -70,10 +70,11 @@ Run Packer by providing:
 1.  A template name for the desired operation.
 2.  A var file for selecting the machine.
 
-Example for Ubuntu 19.10 -
+Example for initial setup Ubuntu 19.10 -
 
 ```bash
 packer build \
+    -var 'shared_folder_path=/c/temp' \
     -var-file=minimum-ubuntu-install/var-files/ubuntu1910-desktop.json \
     minimum-ubuntu-install.json
 ```
@@ -82,8 +83,28 @@ Same for 18.04
 
 ```bash
 packer build \
+    -var 'shared_folder_path=/c/temp' \
     -var-file=minimum-ubuntu-install/var-files/ubuntu1804-desktop.json \
     minimum-ubuntu-install.json
+```
+
+These may be followed by setup, and export runs. Here's an example for
+19.10, to set up graphical interface, do Buildroot build and network
+boot setup for RPi, and export the machine -
+
+```bash
+packer build \
+    -var 'attach_snapshot=base' -var 'target_snapshot=xfce' \
+    -var 'shared_folder_path=/c/temp' \
+    -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
+    provision-ubuntu-vm_xfce4+doublecmd.json
+packer build \
+    -var 'attach_snapshot=xfce' \
+    -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
+    provision-ubuntu-vm_rpi-buildroot.json
+packer build \
+    -var-file=export-ubuntu-box/var-files/ubuntu1910-desktop.json \
+    export-ubuntu-box.json
 ```
 
 #### Customizing Build
