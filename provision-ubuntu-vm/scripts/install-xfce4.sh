@@ -8,6 +8,11 @@ sudo DEBIAN_FRONTEND=noninteractive \
     apt install -y --no-install-recommends \
     xorg xinit dbus-x11 upower
 
+echo "==> Installing display manager"
+sudo DEBIAN_FRONTEND=noninteractive \
+    apt install -y --no-install-recommends \
+    policykit-1 lightdm lightdm-gtk-greeter
+
 echo "==> Installing XFCE4 and additional stuff"
 sudo DEBIAN_FRONTEND=noninteractive \
     apt install -y --no-install-recommends \

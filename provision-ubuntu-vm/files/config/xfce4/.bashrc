@@ -115,7 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  echo "Execute startx to start GUI"
-fi
