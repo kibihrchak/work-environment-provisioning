@@ -60,8 +60,8 @@ easily find necessary files.
 
 You'll need to have on your machine installed -
 
-1.  Packer (<https://www.packer.io/>)
-2.  VirtualBox (<https://www.virtualbox.org/>)
+1.  Packer (<https://www.packer.io/>) - Tested with 1.4.4.
+2.  VirtualBox (<https://www.virtualbox.org/>) - Tested with 6.1.2.
 
 ### Running
 
@@ -95,7 +95,6 @@ boot setup for RPi, and export the machine -
 ```bash
 packer build \
     -var 'attach_snapshot=base' -var 'target_snapshot=xfce' \
-    -var 'shared_folder_path=/c/temp' \
     -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
     provision-ubuntu-vm_xfce4+doublecmd.json
 packer build \
