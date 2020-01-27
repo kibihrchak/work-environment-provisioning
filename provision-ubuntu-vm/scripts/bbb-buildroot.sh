@@ -47,7 +47,7 @@ then
     tar -ax \
         -f "${BUILDROOT_ARCHIVE_NAME}" \
         -C ~/buildroot/
-    rm "${BUILDROOT_ARCHIVE_NAME}"
+    rm "${BUILDROOT_ARCHIVE_NAME}" "${BUILDROOT_ARCHIVE_NAME}.sign"
 
     echo "==> Configuring Buildroot repo"
     export BR2_DEFCONFIG=~/buildroot/defconfig
