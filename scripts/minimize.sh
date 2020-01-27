@@ -14,40 +14,15 @@ function dd_report()
 
 DISK_USAGE_BEFORE_MINIMIZE=$(df -h)
 
-#   [TODO] Should this be removed? What if user installed them on purpose?
-echo "==> Removing all linux kernels except the currrent one"
-dpkg --list | awk '{ print $2 }' | grep -e 'linux-\(headers\|image\)-.*[0-9]\($\|-generic\)' | grep -v "$(uname -r | sed 's/-generic//')" | xargs apt-get -y purge
-echo "==> Removing linux source"
-dpkg --list | awk '{ print $2 }' | grep linux-source | xargs apt-get -y purge
-echo "==> Removing development packages"
-dpkg --list | awk '{ print $2 }' | grep -- '-dev$' | xargs apt-get -y purge
-echo "==> Removing documentation"
-dpkg --list | awk '{ print $2 }' | grep -- '-doc$' | xargs apt-get -y purge
-echo "==> Removing obsolete networking components"
-apt-get -y purge ppp pppconfig pppoeconf
-
-#   [TODO] This doesn't work
-echo "==> Clean up orphaned packages with deborphan"
-apt-get -y install deborphan
-while [ -n "$(deborphan --guess-all --libdevel)" ]; do
-  deborphan --guess-all --libdevel | xargs apt-get -y purge
-done
-apt-get -y purge deborphan dialog
-
 echo "==> Clean up the apt cache"
 apt-get -y autoremove --purge
 apt-get -y autoclean
 apt-get -y clean
 rm -rf /var/lib/apt/lists/*
 
-#   [TODO] Should this be removed? What if user installed them on purpose?
-echo "==> Removing man pages"
-rm -rf /usr/share/man/*
-echo "==> Removing any docs"
-rm -rf /usr/share/doc/*
-
 echo "==> Removing APT files"
 find /var/lib/apt -type f | xargs rm -f
+
 echo "==> Removing caches"
 find /var/cache -type f -exec rm -rf {} \;
 
