@@ -22,7 +22,7 @@ sudo DEBIAN_FRONTEND=noninteractive \
 echo "==> Installing themes, icons"
 sudo DEBIAN_FRONTEND=noninteractive \
     apt install -y --no-install-recommends \
-    elementary-xfce-icon-theme greybird-gtk-theme
+    xubuntu-icon-theme greybird-gtk-theme
 
 echo "==> Removing unused stuff"
 sudo DEBIAN_FRONTEND=noninteractive \
