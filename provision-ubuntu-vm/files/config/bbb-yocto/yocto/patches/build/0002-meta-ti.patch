@@ -1,0 +1,10 @@
+Index: yocto/build/conf/bblayers.conf
+===================================================================
+--- yocto.orig/build/conf/bblayers.conf
++++ yocto/build/conf/bblayers.conf
+@@ -8,4 +8,5 @@ BBFILES ?= ""
+ BBLAYERS ?= " \
+   /home/vagrant/yocto/poky/meta \
+   /home/vagrant/yocto/poky/meta-poky \
++  /home/vagrant/yocto/meta-ti \
+   "

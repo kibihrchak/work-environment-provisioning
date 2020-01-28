@@ -1,0 +1,13 @@
+Index: yocto/build/conf/local.conf
+===================================================================
+--- yocto.orig/build/conf/local.conf
++++ yocto/build/conf/local.conf
+@@ -35,7 +35,7 @@
+ #MACHINE ?= "edgerouter"
+ #
+ # This sets the default machine to be qemux86 if no other machine is selected:
+-MACHINE ??= "qemux86"
++MACHINE ??= "beaglebone"
+ 
+ #
+ # Where to place downloads

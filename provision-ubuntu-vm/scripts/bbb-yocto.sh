@@ -3,7 +3,9 @@
 SSH_USER=${SSH_USERNAME:-vagrant}
 SSH_GROUP=$(id -g ${SSH_USER})
 YOCTO_DOWNLOAD_BASE="http://downloads.yoctoproject.org/releases/yocto/yocto-${YOCTO_VERSION}"
-POKY_ARCHIVE_BASE_NAME="poky-${POKY_VERSION}.tar.bz2"
+POKY_BASE_NAME="poky-${POKY_VERSION}"
+POKY_ARCHIVE_BASE_NAME="${POKY_BASE_NAME}.tar.bz2"
+META_TI_BRANCH="ti2018.02"
 
 echo "==> Installing file servers (NFS, TFTP)"
 sudo DEBIAN_FRONTEND=noninteractive \
@@ -26,6 +28,8 @@ echo "==> Configuring system"
 sudo cp -R /tmp/files/config/bbb-yocto/root/. /
 sudo mkdir -p /nfs/bbb /tftp/bbb
 sudo mkdir -p /mnt/bbb/boot /mnt/bbb/rfs
+git config --global user.email "vagrant@vagrant.com"
+git config --global user.name "Vagrant"
 
 #   [TODO]
 echo "==> Configuring Yocto directory"
@@ -48,13 +52,27 @@ then
     tar -ax \
         -f "${POKY_ARCHIVE_BASE_NAME}" \
         -C ~/yocto/
+    mv ~/yocto/${POKY_BASE_NAME} ~/yocto/poky
     rm "${POKY_ARCHIVE_BASE_NAME}" "${POKY_ARCHIVE_BASE_NAME}.md5sum"
 
-    #   [TODO]
-    echo "==> Configuring Yocto repo"
-    export BR2_DEFCONFIG=~/buildroot/yocto
-    cd ~/yocto/build
-    make -C ../${BUILDROOT_BASE_NAME} O="$(pwd)" defconfig
+    echo "==> Getting meta-ti from source"
+    cd ~/yocto
+    git clone -b ${META_TI_BRANCH} --single-branch https://git.yoctoproject.org/git/meta-ti
+    cd meta-ti
+    git checkout -b sumo
+
+    echo "==> Patching sources"
+    git am ../patches/meta-ti/00*
+    cd ~/yocto/poky
+    patch -p1 <../patches/poky/0001-bblayers-do-not-include-meta-yocto-bsp.patch
+
+    echo "==> Configuring build environment"
+    cd ~/yocto
+    set +u
+    source poky/oe-init-build-env
+    set -u
+    patch -p2 <../patches/build/0001-machine.patch
+    patch -p2 <../patches/build/0002-meta-ti.patch
 
     echo "==> Executing build"
     ~/yocto/build.sh
