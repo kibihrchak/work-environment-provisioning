@@ -1,0 +1,5 @@
+[user]
+	email = vagrant@vagrant.com
+	name = Vagrant
+[url "https://git.ti.com/git"]
+	insteadOf = git://git.ti.com

@@ -28,14 +28,11 @@ echo "==> Configuring system"
 sudo cp -R /tmp/files/config/bbb-yocto/root/. /
 sudo mkdir -p /nfs/bbb /tftp/bbb
 sudo mkdir -p /mnt/bbb/boot /mnt/bbb/rfs
-git config --global user.email "vagrant@vagrant.com"
-git config --global user.name "Vagrant"
+cp -R /tmp/files/config/bbb-yocto/home/. ~/
 
 #   [TODO]
 echo "==> Configuring Yocto directory"
 mkdir -p ~/yocto/build
-cp -R /tmp/files/config/bbb-yocto/yocto/. \
-    ~/yocto/
 chmod 755 ~/yocto/*.sh
 
 if [ -z "${YOCTO_ARCHIVE_PATH}" ]
