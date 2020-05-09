@@ -1,5 +1,5 @@
 {
-  "_comment": "Provision VSCode and CMake env to Ubuntu installation",
+  "description": "Provision VSCode and CMake env to Ubuntu installation",
   "builders": [
     {
       "type": "virtualbox-vm",

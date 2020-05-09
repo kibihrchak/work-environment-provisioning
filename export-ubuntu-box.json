@@ -1,5 +1,5 @@
 {
-  "_comment": "Export given Ubuntu VM as an Vagrant box",
+  "description": "Export given Ubuntu VM as an Vagrant box",
   "builders": [
     {
       "type": "virtualbox-vm",

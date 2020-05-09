@@ -1,5 +1,5 @@
 {
-  "_comment": "Provision basic XFCE4 GUI on an Ubuntu VM",
+  "description": "Provision basic XFCE4 GUI on an Ubuntu VM",
   "builders": [
     {
       "type": "virtualbox-vm",

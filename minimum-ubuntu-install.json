@@ -1,5 +1,5 @@
 {
-  "_comment": "Minimum Ubuntu VM unattended installation",
+  "description": "Minimum Ubuntu VM unattended installation",
   "builders": [
     {
       "type": "virtualbox-iso",
