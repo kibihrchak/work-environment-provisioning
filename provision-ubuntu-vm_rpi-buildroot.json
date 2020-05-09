@@ -1,5 +1,5 @@
 {
-  "_comment": "Provision minimum Ubuntu VM unattended installation with RPi-build of Buildroot",
+  "_comment": "Provision RPi build of Buildroot on an Ubuntu VM",
   "builders": [
     {
       "type": "virtualbox-vm",
