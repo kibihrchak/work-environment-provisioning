@@ -19,6 +19,16 @@
   "provisioners": [
     {
       "type": "shell",
+      "expect_disconnect": "true",
+      "environment_vars": [
+        "UPGRADE={{user `upgrade`}}"
+      ],
+      "scripts": [
+        "scripts/update+upgrade.sh"
+      ]
+    },
+    {
+      "type": "shell",
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "expect_disconnect": "true",
       "scripts": [
@@ -41,6 +51,6 @@
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "attach_snapshot": "provisioned",
-    "update": "false"
+    "upgrade": "false"
   }
 }

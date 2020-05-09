@@ -31,6 +31,7 @@
         "UPGRADE={{user `upgrade`}}"
       ],
       "scripts": [
+        "scripts/update+upgrade.sh",
         "{{ user `json_name` }}/scripts/install-pio.sh",
         "{{ user `json_name` }}/scripts/install-codium.sh"
       ]
