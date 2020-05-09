@@ -1,0 +1,164 @@
+{
+    "editor.formatOnSave": true,
+    "editor.renderWhitespace": "selection",
+    "editor.wordWrap": "on",
+    "workbench.startupEditor": "newUntitledFile",
+    "vim.foldfix": true,
+    "vim.hlsearch": true,
+    "vim.leader": ",",
+    "vim.highlightedyank.enable": true,
+    "vim.easymotion": true,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "p"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "P"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "P"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "d"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<Space>"
+            ],
+            "commands": [
+                "editor.toggleFold"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "U"
+            ],
+            "after": [
+                "<C-r>"
+            ]
+        },
+        {
+            "before": [
+                "<C-r>"
+            ],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "p"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "P"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "P"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "d"
+            ]
+        },
+    ],
+    "editor.rulers": [
+        72,
+        80
+    ],
+    "workbench.colorTheme": "Default Light+",
+    "C_Cpp.updateChannel": "Insiders",
+    "diffEditor.renderSideBySide": false,
+    "extensions.ignoreRecommendations": false,
+    "C_Cpp.experimentalFeatures": "Enabled",
+    "window.restoreWindows": "all",
+    "window.newWindowDimensions": "inherit",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "search.showLineNumbers": true,
+    "editor.wrappingIndent": "indent",
+    "explorer.confirmDelete": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "debug.toolBarLocation": "docked",
+}
