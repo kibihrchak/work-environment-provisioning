@@ -1,0 +1,4 @@
+{
+  "_comment": "Config variables for provisioning minimum Ubuntu VM unattended installation",
+  "vm_name": "ubuntu2004-desktop"
+}

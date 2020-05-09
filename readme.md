@@ -149,3 +149,5 @@ who participated in this project.
     <https://github.com/fasmat/ubuntu>
 *   Readme file basis by PurpleBooth -
     <https://gist.github.com/PurpleBooth/109311bb0361f32d87a2>
+*   Ubuntu 20.04 image link -
+    <https://github.com/boxcutter/ubuntu/blob/master/ubuntu2004.json>
