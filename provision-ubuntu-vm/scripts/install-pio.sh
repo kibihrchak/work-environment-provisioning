@@ -11,3 +11,11 @@ sudo DEBIAN_FRONTEND=noninteractive \
 echo "==> Installing PlatformIO"
 python3 -c \
     "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
+
+echo "==> Installing udev rules needed for HW access"
+curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
+sudo service udev restart
+
+echo "==> Add users to groups needed for HW access"
+sudo usermod -a -G dialout $SSH_USER
+sudo usermod -a -G plugdev $SSH_USER
