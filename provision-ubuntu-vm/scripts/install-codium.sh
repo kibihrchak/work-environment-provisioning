@@ -10,6 +10,8 @@ declare -ar VSCODE_EXTENSIONS=(\
     "stkb.rewrap" \
     "streetsidesoftware.code-spell-checker" \
     "vscodevim.vim" \
+    "ms-vscode.cmake-tools" \
+    "twxs.cmake" \
 )
 
 echo "==> Installing Codium prerequisites"
