@@ -60,8 +60,8 @@ easily find necessary files.
 
 You'll need to have on your machine installed -
 
-1.  Packer (<https://www.packer.io/>) - Tested with 1.4.4.
-2.  VirtualBox (<https://www.virtualbox.org/>) - Tested with 6.1.2.
+1.  Packer (<https://www.packer.io/>) - Tested with `>= 1.4.4`.
+2.  VirtualBox (<https://www.virtualbox.org/>) - Tested with `>= 6.1.2`.
 
 ### Running
 
