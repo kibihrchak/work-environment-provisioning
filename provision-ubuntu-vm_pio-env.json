@@ -1,5 +1,5 @@
 {
-  "_comment": "Provision PlatformIO env to Ubuntu installation",
+  "description": "Provision PlatformIO env to Ubuntu installation",
   "builders": [
     {
       "type": "virtualbox-vm",

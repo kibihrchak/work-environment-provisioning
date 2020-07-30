@@ -1,5 +1,5 @@
 {
-  "_comment": "Provision minimum Ubuntu VM unattended installation",
+  "description": "Provision basic XFCE4 GUI on an Ubuntu VM",
   "builders": [
     {
       "type": "virtualbox-vm",

@@ -1,5 +1,5 @@
 {
-  "_comment": "Provision minimum Ubuntu VM unattended installation with BBB build of Buildroot",
+  "description": "Provision BBB build of Buildroot on a Ubuntu VM",
   "builders": [
     {
       "type": "virtualbox-vm",
