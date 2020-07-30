@@ -175,7 +175,7 @@
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "time_zone": "UTC",
-    "upgrade": "false",
+    "upgrade": "true",
     "snapshot_name": "base",
     "shared_folder_path": null
   }
