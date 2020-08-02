@@ -1,0 +1,13 @@
+---
+- hosts: devvm
+  tasks:
+  - name: Install Double Commander
+    apt:
+      name: doublecmd-gtk
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Copy configuration files
+    copy:
+      src: /tmp/files/config/doublecmd/
+      dest: "{{ ansible_env.HOME }}"
