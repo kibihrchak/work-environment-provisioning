@@ -37,5 +37,7 @@ echo "==> Clearing last login information"
 >/var/log/wtmp
 >/var/log/btmp
 
+echo "==> [TODO] Clean Python pip cache"
+
 echo "==> Sync to avoid non-consistent data on Packer quit"
 sync
