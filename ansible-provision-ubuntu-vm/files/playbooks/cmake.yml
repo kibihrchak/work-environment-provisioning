@@ -1,0 +1,17 @@
+---
+- hosts: devvm
+  tasks:
+  - name: Install CMake
+    apt:
+      name: cmake
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Install Clang support tools
+    apt:
+      name:
+      - clang-tidy
+      - clang-format
+      state: latest
+      install_recommends: no
+    become: yes
