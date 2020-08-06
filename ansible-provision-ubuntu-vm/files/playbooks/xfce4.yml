@@ -1,0 +1,51 @@
+---
+- hosts: devvm
+  tasks:
+  - name: Install Xfce4 prerequisites
+    apt:
+      name:
+      - xorg
+      - xinit
+      - dbus-x11
+      - upower
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Install display manager
+    apt:
+      name:
+      - policykit-1
+      - lightdm
+      - lightdm-gtk-greeter
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Install Xfce4 (wm and accompanying packages)
+    apt:
+      name:
+      - xfce4
+      - xfce4-taskmanager
+      - xfce4-systemload-plugin
+      - xfce4-whiskermenu-plugin
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Install themes and icons
+    apt:
+      name:
+      - xubuntu-icon-theme
+      - greybird-gtk-theme
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Remove unused stuff
+    apt:
+      name:
+      - humanity-icon-theme
+      state: absent
+      purge: yes
+    become: yes
+  - name: Copy configuration files
+    copy:
+      src: /tmp/files/config/xfce4/
+      dest: "{{ ansible_env.HOME }}"
