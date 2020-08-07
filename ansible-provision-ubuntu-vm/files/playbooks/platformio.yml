@@ -1,0 +1,38 @@
+---
+- hosts: devvm
+  tasks:
+  - name: Install PlatformIO prerequisite packages
+    apt:
+      name:
+      - python3
+      - python3-distutils
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Get PlatformIO installer
+    get_url:
+      url: https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py
+      dest: /tmp/get-platformio.py
+  - name: Check if PlatformIO is installed
+    script:
+      cmd: /tmp/get-platformio.py check core
+      executable: python3
+    register: pio_check_core
+  - name: Install PlatformIO
+    script:
+      cmd: /tmp/get-platformio.py
+      executable: python3
+    when: pio_check_core.rc
+  - name: Install udev rules
+    get_url:
+      url: https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules
+      dest: /etc/udev/rules.d/99-platformio-udev.rules
+    become: yes
+  - name: Add user to groups
+    user:
+      name: "{{ ansible_user_id }}"
+      groups:
+      - dialout
+      - plugdev
+      append: yes
+    become: yes
