@@ -1,0 +1,24 @@
+---
+- hosts: devvm
+  vars:
+    git_user_name: "{{ lookup('env', 'GIT_USER_NAME') }}"
+    git_user_email: "{{ lookup('env', 'GIT_USER_EMAIL') }}"
+  tasks:
+  - name: Install Git
+    apt:
+      name: git
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Install Git support tools
+    apt:
+      name:
+      - gitk
+      - git-gui
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Deploy Git config
+    template:
+      src: "{{ playbook_dir }}/git/.gitconfig.j2"
+      dest: "{{ ansible_env.HOME }}/.gitconfig"
