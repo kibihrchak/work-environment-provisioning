@@ -12,7 +12,6 @@ def test_vscodium_extensions(host):
     expected_extensions = (
           "alefragnani.Bookmarks",
           "ms-vscode.cpptools",
-          "platformio.platformio-ide",
           "stkb.rewrap",
           "streetsidesoftware.code-spell-checker",
           "vscodevim.vim",

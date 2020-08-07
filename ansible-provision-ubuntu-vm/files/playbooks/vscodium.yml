@@ -33,7 +33,6 @@
     loop:
       - alefragnani.Bookmarks
       - ms-vscode.cpptools
-      - platformio.platformio-ide
       - stkb.rewrap
       - streetsidesoftware.code-spell-checker
       - vscodevim.vim
