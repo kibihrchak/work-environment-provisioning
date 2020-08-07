@@ -96,7 +96,8 @@ boot setup for RPi, and export the machine -
 packer build \
     -var 'attach_snapshot=base' -var 'target_snapshot=xfce' \
     -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
-    provision-ubuntu-vm_xfce4+doublecmd.json
+    -var 'ansible_playbooks=xfce4,doublecmd' \
+    ansible-provision-ubuntu-vm.json
 packer build \
     -var 'attach_snapshot=xfce' \
     -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
@@ -105,6 +106,21 @@ packer build \
     -var-file=export-ubuntu-box/var-files/ubuntu1910-desktop.json \
     export-ubuntu-box.json
 ```
+
+#### Two Ways of Provisioning VM Components
+
+Note in the previous example that there are two ways provisioning how
+provisioning was done:
+
+1.  Through standalone Packer template running shell scripts -
+    `provision-ubuntu-vm_rpi-buildroot.json`.
+2.  Through common Ansible provisioning template running provisioning
+    for the given components - `ansible-provision-ubuntu-vm.json`. In
+    this case provisioned components are `xfce4`, and `doublecmd`.
+
+Ansible-way is preferred for anything but the base provisioning. The
+first way was the original one and will be fully transitioned to Ansible
+with time.
 
 #### Customizing Build
 

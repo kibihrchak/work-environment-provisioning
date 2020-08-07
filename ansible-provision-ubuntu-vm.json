@@ -1,5 +1,5 @@
 {
-  "description": "Provision basic XFCE4 GUI on an Ubuntu VM",
+  "description": "Ansible provision of Ubuntu VM",
   "builders": [
     {
       "type": "virtualbox-vm",
@@ -28,22 +28,24 @@
       "environment_vars": [
         "SSH_USERNAME={{user `ssh_username`}}",
         "SSH_PASSWORD={{user `ssh_password`}}",
-        "UPGRADE={{user `upgrade`}}"
+        "UPGRADE={{user `upgrade`}}",
+        "ANSIBLE_PLAYBOOKS={{user `ansible_playbooks`}}"
       ],
       "scripts": [
         "scripts/update+upgrade.sh",
-        "{{ user `json_name` }}/scripts/install-xfce4.sh",
-        "{{ user `json_name` }}/scripts/install-doublecmd.sh"
+        "{{ user `json_name` }}/scripts/ansible.sh",
+        "{{ user `json_name` }}/scripts/spec.sh"
       ]
     }
   ],
   "variables": {
-    "json_name": "provision-ubuntu-vm",
+    "json_name": "ansible-provision-ubuntu-vm",
     "headless": "false",
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "attach_snapshot": "base",
     "target_snapshot": "provisioned",
+    "ansible_playbooks": null,
     "upgrade": "false"
   }
 }

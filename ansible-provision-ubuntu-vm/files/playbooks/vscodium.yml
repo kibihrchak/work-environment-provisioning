@@ -1,0 +1,45 @@
+---
+- hosts: devvm
+  tasks:
+  - name: Install VSCodium prerequisites
+    apt:
+      name: libasound2
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Add a key for VSCodium repository
+    apt_key:
+      url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+      state: present
+    become: yes
+  - name: Add a VSCodium repository
+    apt_repository:
+      repo: deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main
+      state: present
+      filename: vscodium
+    become: yes
+  - name: Install VSCodium
+    apt:
+      name: codium
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Replace marketplace
+    script:
+      cmd: "{{ playbook_dir }}/vscodium/marketplace-fix.sh"
+    become: yes
+  - name: Install VSCodium extensions
+    shell: codium --install-extension "{{ item }}"
+    loop:
+      - alefragnani.Bookmarks
+      - ms-vscode.cpptools
+      - platformio.platformio-ide
+      - stkb.rewrap
+      - streetsidesoftware.code-spell-checker
+      - vscodevim.vim
+      - ms-vscode.cmake-tools
+      - twxs.cmake
+  - name: Copy configuration files
+    copy:
+      src: /tmp/files/config/vscodium/
+      dest: "{{ ansible_env.HOME }}"
