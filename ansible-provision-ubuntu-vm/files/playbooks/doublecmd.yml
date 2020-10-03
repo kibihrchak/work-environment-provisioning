@@ -9,5 +9,5 @@
     become: yes
   - name: Copy configuration files
     copy:
-      src: /tmp/files/config/doublecmd/
+      src: "{{ playbook_dir }}/../config/doublecmd/"
       dest: "{{ ansible_env.HOME }}"

@@ -40,5 +40,5 @@
       - twxs.cmake
   - name: Copy configuration files
     copy:
-      src: /tmp/files/config/vscodium/
+      src: "{{ playbook_dir }}/../config/vscodium/"
       dest: "{{ ansible_env.HOME }}"

@@ -47,5 +47,5 @@
     become: yes
   - name: Copy configuration files
     copy:
-      src: /tmp/files/config/xfce4/
+      src: "{{ playbook_dir }}/../config/xfce4/"
       dest: "{{ ansible_env.HOME }}"
