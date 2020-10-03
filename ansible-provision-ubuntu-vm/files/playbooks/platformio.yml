@@ -30,3 +30,37 @@
       - plugdev
       append: yes
     become: yes
+  - name: Get VSCodium install info
+    command: "apt list -qq --installed codium"
+    register: apt_list_installed_codium
+  - name: VSCodium PlatformIO provisioning
+    block:
+      - name: Install extensions
+        shell: codium --install-extension "{{ item }}"
+        loop:
+          - ms-vscode.cpptools
+          - platformio.platformio-ide
+      - name: Append user config
+        vars:
+          config_file_path: "{{ ansible_env.HOME }}/.config/VSCodium/User/settings.json"
+          config_replace_file_path: "{{ playbook_dir }}/platformio/vscodium_config_replace.json"
+        block:
+          - name: Read config file
+            include_vars:
+              file: "{{ config_file_path }}"
+              name: vscodium_config
+          - name: Read replace config file
+            include_vars:
+              file: "{{ config_replace_file_path }}"
+              name: vscodium_config_replace
+          - name: Update config files
+            set_fact:
+              vscodium_config: >-
+                {{ vscodium_config | default([]) | combine(
+                  vscodium_config_replace
+                ) }}
+          - name: Write updated config file
+            copy: 
+              content: "{{ vscodium_config | to_nice_json }}" 
+              dest: "{{ config_file_path }}"
+    when: apt_list_installed_codium.stdout != ""
