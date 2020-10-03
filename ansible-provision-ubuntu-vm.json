@@ -28,7 +28,9 @@
         "SSH_USERNAME={{user `ssh_username`}}",
         "SSH_PASSWORD={{user `ssh_password`}}",
         "UPGRADE={{user `upgrade`}}",
-        "ANSIBLE_PLAYBOOKS={{user `ansible_playbooks`}}"
+        "ANSIBLE_PLAYBOOKS={{user `ansible_playbooks`}}",
+        "ANSIBLE_PLAYBOOKS_DIR=/tmp/files/playbooks",
+        "ANSIBLE_SPEC_DIR=/tmp/files/spec"
       ],
       "scripts": [
         "scripts/update+upgrade.sh",
