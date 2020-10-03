@@ -14,16 +14,9 @@
       url: https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py
       dest: /tmp/get-platformio.py
   - name: Install PlatformIO
-    block:
-      - name: Check if PlatformIO is installed
-        script:
-          cmd: /tmp/get-platformio.py check core
-          executable: python3
-    rescue:
-      - name: Install PlatformIO
-        script:
-          cmd: /tmp/get-platformio.py
-          executable: python3
+    script:
+      cmd: /tmp/get-platformio.py
+      executable: python3
   - name: Install udev rules
     get_url:
       url: https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules
