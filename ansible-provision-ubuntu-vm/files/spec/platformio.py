@@ -19,12 +19,16 @@ def test_pio_installed(host):
 
     assert status == 0
 
-#   [TODO] This one always returns True for some reason
 def test_pio_udev_rules(host):
-    assert True
-    # assert not host.ansible(
-    #     "get_url",
-    #     "url=https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules dest=/etc/udev/rules.d/99-platformio-udev.rules", become=True)["changed"]
+    import urllib.request
+    import filecmp
+
+    downloaded_file_path = '/tmp/99-platformio-udev.rules'
+    deployed_file_path = '/etc/udev/rules.d/99-platformio-udev.rules'
+
+    urllib.request.urlretrieve('https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules', downloaded_file_path)
+
+    assert filecmp.cmp(downloaded_file_path, deployed_file_path)
 
 def test_pio_user_groups(host):
     expected_groups = (
