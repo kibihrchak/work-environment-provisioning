@@ -40,3 +40,7 @@ def test_pio_user_groups(host):
 
     for expected_group in expected_groups:
         assert expected_group in groups
+
+#   [TODO] Add a test for VSCodium config update
+def test_vscodium_config(host):
+    assert True
