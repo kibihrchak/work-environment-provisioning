@@ -30,12 +30,12 @@
         "UPGRADE={{user `upgrade`}}",
         "ANSIBLE_PLAYBOOKS={{user `ansible_playbooks`}}",
         "ANSIBLE_PLAYBOOKS_DIR=/tmp/files/playbooks",
-        "ANSIBLE_SPEC_DIR=/tmp/files/spec"
+        "ANSIBLE_TESTS_DIR=/tmp/files/tests"
       ],
       "scripts": [
         "scripts/update+upgrade.sh",
         "{{ user `json_name` }}/scripts/ansible.sh",
-        "{{ user `json_name` }}/scripts/spec.sh"
+        "{{ user `json_name` }}/scripts/test.sh"
       ]
     }
   ],
