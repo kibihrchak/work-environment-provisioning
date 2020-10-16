@@ -30,7 +30,8 @@
         "UPGRADE={{user `upgrade`}}",
         "ANSIBLE_PLAYBOOKS={{user `ansible_playbooks`}}",
         "ANSIBLE_PLAYBOOKS_DIR=/tmp/files/playbooks",
-        "ANSIBLE_TESTS_DIR=/tmp/files/tests"
+        "ANSIBLE_TESTS_DIR=/tmp/files/tests",
+        "ANSIBLE_ENVVARS={{user `ansible_envvars`}}"
       ],
       "scripts": [
         "scripts/update+upgrade.sh",
@@ -47,6 +48,7 @@
     "attach_snapshot": "base",
     "target_snapshot": "provisioned",
     "ansible_playbooks": null,
+    "ansible_envvars": "",
     "upgrade": "false"
   }
 }
