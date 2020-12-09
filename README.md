@@ -157,8 +157,6 @@ See also the list of [GitHub
 contributors](https://github.com/kibihrchak/work-environment-provisioning/contributors)
 who participated in this project.
 
-## [TODO] License
-
 ## Acknowledgments
 
 *   Base Packer templates by fasmat -
