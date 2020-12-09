@@ -1,0 +1,155 @@
+---
+- hosts: devvm
+  vars:
+    pandoc_plot_dir_path: /usr/local/bin
+  tasks:
+  - name: Install Pandoc
+    # Install a tad older version to be compatible with pantable filter
+    apt:
+      deb: https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
+      state: present
+    become: yes
+  - name: Get current pandoc-plot state
+    stat:
+      path: "{{ pandoc_plot_dir_path }}/pandoc-plot"
+      checksum_algorithm: sha256
+    register: pandoc_plot_stat
+  - name: Install matplotlib
+    pip:
+      name: matplotlib
+    become: yes
+  - name: Install pandoc-plot
+    vars:
+      pandoc_plot_sha256: cb68139c74c581cae92ceb355e63e426ef46cfbcd11e27c309dc331192a0fe29
+    block:
+      - name: Download pandoc-plot
+        get_url:
+          # Last version compatible w. Pandoc 2.9.2.1
+          url: https://github.com/LaurentRDC/pandoc-plot/releases/download/0.7.1.0/pandoc-plot-linux-x86_64.tar.xz
+          dest: /tmp/pandoc-plot-linux-x86_64.tar.xz
+          checksum: sha256:258075b4c96b4222b0fd62218582520d36ca471742c64d588b431b76d221bea3
+      - name: Unpack pandoc-plot
+        unarchive:
+          src: "/tmp/pandoc-plot-linux-x86_64.tar.xz"
+          dest: "{{ pandoc_plot_dir_path }}"
+          remote_src: yes
+        become: yes
+    when: not (pandoc_plot_stat.stat.checksum is defined and pandoc_plot_stat.stat.checksum == pandoc_plot_sha256)
+  - name: Install Pandoc Diagram Generator Lua filter
+    block:
+      - name: Create Pandoc Lua filters directory
+        file:
+          path: "{{ ansible_env.HOME }}/.local/share/pandoc/filters/"
+          state: directory
+      - name: Download Diagram Generator
+        get_url:
+          url: https://raw.githubusercontent.com/pandoc/lua-filters/master/diagram-generator/diagram-generator.lua
+          dest: "{{ ansible_env.HOME }}/.local/share/pandoc/filters/diagram-generator.lua"
+          checksum:  sha256:316f3d9b8199537e10e0564793922f7c023b70fe23f0238b4755906155cecd45
+  - name: Install pantable
+    pip:
+      name: pantable
+    become: yes
+  - name: Install PlantUML
+    vars:
+      plantuml_version: 1.2020.19
+      plantuml_checksum: sha256:112b9c44ea069a9b24f237dfb6cb7a6cfb9cd918e507e9bee2ebb9c3797f6051
+      plantuml_dest: "{{ ansible_env.HOME }}/Java/plantuml.{{ plantuml_version }}.jar"
+    block:
+      - name: Install JRE
+        apt:
+          name: openjdk-14-jre-headless
+          state: latest
+          install_recommends: no
+        become: yes
+      - name: Install Graphviz
+        apt:
+          name: graphviz
+          state: latest
+          install_recommends: no
+        become: yes
+      - name: Create Java files directory
+        file:
+          path: "{{ ansible_env.HOME }}/Java"
+          state: directory
+      - name: Download PlantUML
+        get_url:
+          url: "https://sourceforge.net/projects/plantuml/files/{{ plantuml_version }}/plantuml.{{ plantuml_version }}.jar"
+          dest: "{{ plantuml_dest }}"
+          checksum:  "{{ plantuml_checksum }}"
+      - name: Set PLANTUML envvar to PlantUML path
+        lineinfile:
+          dest: "{{ ansible_env.HOME }}/.bashrc"
+          regexp: '^export PLANTUML=.*'
+          line: "export PLANTUML={{ plantuml_dest }}"
+  - name: Install Pandoc PDF export tools
+    block:
+    - name: Provide LaTeX export capability
+      block:
+      - name: Install LaTeX basic stuff
+        apt:
+          name:
+          - texlive-latex-base
+          - texlive-latex-extra
+          - texlive-latex-recommended
+          state: latest
+          install_recommends: no
+        become: yes
+      - name: Install Modern style for Pandoc default PDF export
+        apt:
+          name: lmodern
+          state: latest
+          install_recommends: no
+        become: yes
+    - name: Install wkhtmltopdf
+      apt:
+        name: wkhtmltopdf
+        state: latest
+        install_recommends: no
+      become: yes
+  - name: Install Read the Docs packages
+    pip:
+      name:
+        - sphinx
+        - recommonmark
+    become: yes
+  - name: Install Ruby tools - Asciidoctor, Jekyll
+    block:
+    - name: Install Ruby
+      apt:
+        name:
+          - ruby
+          - ruby-dev
+        state: latest
+        install_recommends: no
+      become: yes
+    - name: Install Asciidoctor
+      gem:
+        name: asciidoctor
+        state: latest
+        user_install: no
+      become: yes
+    - name: Install Jekyll prerequisite - Bundler
+      gem:
+        name: bundler
+        state: latest
+        user_install: no
+      become: yes
+    - name: Install Jekyll
+      gem:
+        name: jekyll
+        state: latest
+        user_install: no
+      become: yes
+  - name: Install code documentation tools
+    block:
+    - name: Install Doxygen
+      apt:
+        name: doxygen
+        state: latest
+        install_recommends: no
+      become: yes
+    - name: Install Breathe
+      pip:
+        name: breathe
+      become: yes
