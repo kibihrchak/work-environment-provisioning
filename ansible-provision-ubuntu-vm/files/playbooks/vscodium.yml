@@ -35,7 +35,6 @@
       - ms-vscode.cpptools
       - stkb.rewrap
       - streetsidesoftware.code-spell-checker
-      - vscodevim.vim
       - ms-vscode.cmake-tools
       - twxs.cmake
   - name: Copy configuration files

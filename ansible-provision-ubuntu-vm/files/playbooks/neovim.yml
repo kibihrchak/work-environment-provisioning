@@ -1,0 +1,48 @@
+---
+- hosts: devvm
+  tasks:
+  - name: Add a Neovim unstable repository
+    apt_repository:
+      repo: ppa:neovim-ppa/unstable
+      state: present
+    become: yes
+  - name: Install Neovim
+    apt:
+      name: neovim
+      state: latest
+      install_recommends: no
+    become: yes
+  - name: Copy configuration files
+    copy:
+      src: "{{ playbook_dir }}/../config/neovim/"
+      dest: "{{ ansible_env.HOME }}"
+  - name: VSCodium Neovim provisioning
+    block:
+      - name: Install extensions
+        shell: codium --install-extension "{{ item }}"
+        loop:
+          - asvetliakov.vscode-neovim
+      - name: Append user config
+        vars:
+          config_file_path: "{{ ansible_env.HOME }}/.config/VSCodium/User/settings.json"
+          config_replace_file_path: "{{ playbook_dir }}/neovim/vscodium_config_replace.json"
+        block:
+          - name: Read config file
+            include_vars:
+              file: "{{ config_file_path }}"
+              name: vscodium_config
+          - name: Read replace config file
+            include_vars:
+              file: "{{ config_replace_file_path }}"
+              name: vscodium_config_replace
+          - name: Update config files
+            set_fact:
+              vscodium_config: >-
+                {{ vscodium_config | default([]) | combine(
+                  vscodium_config_replace
+                ) }}
+          - name: Write updated config file
+            copy: 
+              content: "{{ vscodium_config | to_nice_json }}" 
+              dest: "{{ config_file_path }}"
+    when: apt_list_installed_codium.stdout != ""
