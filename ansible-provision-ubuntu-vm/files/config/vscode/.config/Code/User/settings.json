@@ -1,0 +1,30 @@
+{
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.rulers": [
+        72,
+        80
+    ],
+    "workbench.colorTheme": "Default Light+",
+    "diffEditor.renderSideBySide": false,
+    "window.restoreWindows": "all",
+    "window.newWindowDimensions": "inherit",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "search.showLineNumbers": true,
+    "editor.wrappingIndent": "indent",
+    "explorer.confirmDelete": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "debug.toolBarLocation": "docked",
+    "workbench.editor.scrollToSwitchTabs": true,
+    "editor.scrollBeyondLastColumn": 0,
+    "editor.renderControlCharacters": false,
+    "editor.minimap.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "update.mode": "manual",
+    "window.zoomLevel": 0,
+    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "editor.quickSuggestionsDelay": 1000,
+    "telemetry.enableTelemetry": false
+}

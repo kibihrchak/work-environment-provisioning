@@ -1,0 +1,19 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+u",
+        "command": "-cursorUndo",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+tab",
+        "when": "editorTextFocus && neovim.mode == 'insert'",
+        "args": "<Tab>"
+    }
+]
