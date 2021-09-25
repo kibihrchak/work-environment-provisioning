@@ -70,7 +70,7 @@ Run Packer by providing:
 1.  A template name for the desired operation.
 2.  A var file for selecting the machine.
 
-Example for initial setup Ubuntu 19.10 -
+Example for Ubuntu 19.10 (preseed) initial setup  -
 
 ```bash
 packer build \
@@ -79,13 +79,14 @@ packer build \
     minimum-ubuntu-install_preseed.json
 ```
 
-Same for 18.04 -
+For Ubuntu 22.04 (autoinstall) it is -
 
 ```bash
 packer build \
     -var 'shared_folder_path=/c/temp' \
-    -var-file=minimum-ubuntu-install/var-files/preseed/ubuntu1804-desktop.json \
-    minimum-ubuntu-install_preseed.json
+    -var-file='minimum-ubuntu-install/var-files/autoinstall/ubuntu2204-desktop.pkr.hcl' \
+    -only "virtualbox-iso.autoinstall" \
+    .
 ```
 
 These may be followed by setup, and export runs. Here's an example for
@@ -139,7 +140,7 @@ packer build \
 This sample also contains an additional configuration var,
 `buildroot_archive_path`.
 
-#### `minimum-ubuntu-install.json`
+#### `minimum-ubuntu-install_*.json`
 
 For building up the VM, it is useful to have a shared directory
 attached. So, this template requires specifying a shared directory to be
