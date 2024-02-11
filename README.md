@@ -44,14 +44,14 @@ This staging is done in order to:
 3.  Each template (or a template group) has a same-named directory with
     accompanying stuff, as described for the repo root. In addition,
     there is:
-    3.  `var-files` - Machine types.
+    1.  `var-files` - Machine types.
 4.  VM disks are located in `output` directory
 5.  Output is generated in the following directories:
     1.  `output-<machine-name>` for OVA files.
     2.  `box` for Vagrant boxes.
 
 Packer templates are grouped through a naming scheme -
-`<category>_<name>.json`. This is a pure syntactical thing used to more
+`<category>_<name>.*`. This is a pure syntactical thing used to more
 easily find necessary files.
 
 ## Getting Started
@@ -70,22 +70,23 @@ Run Packer by providing:
 1.  A template name for the desired operation.
 2.  A var file for selecting the machine.
 
-Example for initial setup Ubuntu 19.10 -
+Example for Ubuntu 19.10 (preseed) initial setup  -
 
 ```bash
 packer build \
     -var 'shared_folder_path=/c/temp' \
-    -var-file=minimum-ubuntu-install/var-files/ubuntu1910-desktop.json \
-    minimum-ubuntu-install.json
+    -var-file=minimum-ubuntu-install/var-files/preseed/ubuntu1910-desktop.json \
+    minimum-ubuntu-install_preseed.json
 ```
 
-Same for 18.04
+For Ubuntu 22.04 (autoinstall) it is -
 
 ```bash
 packer build \
     -var 'shared_folder_path=/c/temp' \
-    -var-file=minimum-ubuntu-install/var-files/ubuntu1804-desktop.json \
-    minimum-ubuntu-install.json
+    -var-file='minimum-ubuntu-install/var-files/autoinstall/ubuntu2204-desktop.pkr.hcl' \
+    -only "virtualbox-iso.autoinstall" \
+    .
 ```
 
 These may be followed by setup, and export runs. Here's an example for
@@ -139,7 +140,7 @@ packer build \
 This sample also contains an additional configuration var,
 `buildroot_archive_path`.
 
-#### `minimum-ubuntu-install.json`
+#### `minimum-ubuntu-install_*.json`
 
 For building up the VM, it is useful to have a shared directory
 attached. So, this template requires specifying a shared directory to be
