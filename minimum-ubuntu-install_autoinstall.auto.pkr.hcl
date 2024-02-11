@@ -23,7 +23,7 @@ variable "hostname" {
 
 variable "install_vagrant_key" {
   type = bool
-  default = true
+  default = false
 }
 
 variable "iso_checksum" {

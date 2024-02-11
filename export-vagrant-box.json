@@ -1,0 +1,55 @@
+{
+  "description": "Export given VirtualBox Ubuntu VM as a Vagrant box",
+  "builders": [
+    {
+      "type": "virtualbox-vm",
+      "vm_name": "{{user `vm_name`}}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "headless": "{{ user `headless` }}",
+      "attach_snapshot": "{{ user `attach_snapshot` }}",
+      "ssh_wait_timeout": "10000s",
+      "skip_export": "true",
+      "post_shutdown_delay": "1m",
+      "guest_additions_mode": "disable",
+      "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": "true",
+      "environment_vars": [
+        "UPGRADE={{user `upgrade`}}"
+      ],
+      "scripts": [
+        "scripts/update+upgrade.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "expect_disconnect": "true",
+      "scripts": [
+        "scripts/cleanup.sh",
+        "scripts/minimize.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "keep_input_artifact": true,
+      "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `version`}}.box",
+      "type": "vagrant",
+      "vagrantfile_template": "{{ user `json_name` }}/vagrantfile-template/{{ user `vagrantfile_template` }}"
+    }
+  ],
+  "variables": {
+    "json_name": "export-ubuntu-ovf",
+    "headless": "false",
+    "ssh_password": "vmuser",
+    "ssh_username": "vmuser",
+    "attach_snapshot": "provisioned",
+    "upgrade": "false"
+  }
+}

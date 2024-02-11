@@ -170,7 +170,7 @@
     "boot_command_prefix": "<esc><esc><enter><wait>",
     "cleanup_pause": "",
     "headless": "false",
-    "install_vagrant_key": "true",
+    "install_vagrant_key": "false",
     "hostname": "vm",
     "ssh_fullname": "VM user",
     "ssh_password": "vmuser",
