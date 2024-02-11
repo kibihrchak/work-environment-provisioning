@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
-SSH_USER=${SSH_USERNAME:-vagrant}
-SSH_PASS=${SSH_PASSWORD:-vagrant}
+SSH_USER=${SSH_USERNAME:-vmuser}
+SSH_PASS=${SSH_PASSWORD:-vmuser}
 SSH_USER_HOME=${SSH_USER_HOME:-/home/${SSH_USER}}
 
 echo "==> Create user (if not already present)"

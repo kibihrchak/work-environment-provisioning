@@ -15,7 +15,7 @@ def test_pandoc_pandoc_plot_0_7_1_0_installed(host):
     assert host.run("pandoc-plot --version | grep {0}".format("0.7.1.0")).succeeded
 
 def test_pandoc_diagram_generator_installed(host):
-    assert host.file("/home/vagrant/.local/share/pandoc/filters/diagram-generator.lua").sha256sum == "316f3d9b8199537e10e0564793922f7c023b70fe23f0238b4755906155cecd45"
+    assert host.file("/home/vmuser/.local/share/pandoc/filters/diagram-generator.lua").sha256sum == "316f3d9b8199537e10e0564793922f7c023b70fe23f0238b4755906155cecd45"
 
 def test_pandoc_pantable_installed(host):
     assert "pantable" in host.pip_package.get_packages("pip3")
@@ -27,12 +27,12 @@ def test_plantuml_prerequisite_graphviz_installed(host):
     assert host.package("graphviz").is_installed
 
 def test_plantuml_installed(host):
-    assert host.file("/home/vagrant/Java/plantuml.1.2020.19.jar").sha256sum == "112b9c44ea069a9b24f237dfb6cb7a6cfb9cd918e507e9bee2ebb9c3797f6051"
+    assert host.file("/home/vmuser/Java/plantuml.1.2020.19.jar").sha256sum == "112b9c44ea069a9b24f237dfb6cb7a6cfb9cd918e507e9bee2ebb9c3797f6051"
 
 def test_plantuml_envvar_set(host):
     env = host.environment()
     assert "PLANTUML" in env
-    assert env["PLANTUML"] == "/home/vagrant/Java/plantuml.1.2020.19.jar"
+    assert env["PLANTUML"] == "/home/vmuser/Java/plantuml.1.2020.19.jar"
 
 def test_pandoc_pdf_export_latex_installed(host):
     expected_packages = (

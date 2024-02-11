@@ -18,7 +18,7 @@ variable "headless" {
 
 variable "hostname" {
   type = string
-  default = "vagrant"
+  default = "vm"
 }
 
 variable "install_vagrant_key" {
@@ -53,17 +53,17 @@ variable "snapshot_name" {
 
 variable "ssh_fullname" {
   type = string
-  default = "Vagrant user"
+  default = "VM user"
 }
 
 variable "ssh_username" {
   type = string
-  default = "vagrant"
+  default = "vmuser"
 }
 
 variable "ssh_password" {
   type = string
-  default = "vagrant"
+  default = "vmuser"
 }
 
 variable "uid" {
