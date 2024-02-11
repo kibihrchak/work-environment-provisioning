@@ -14,7 +14,7 @@ connecting steps, for example -
     etc. Process starts from `base` snapshot, going through intermediate
     custom-named snapshots, and finally creates `provisioned` snapshot.
 3.  Prepare for export, perform export - Do cleanup, minimization of
-    `provisioned` snapshot, then export VM to OVF and to Vagrant Box.
+    `provisioned` snapshot, then export VM to OVF.
 
 This staging is done in order to:
 
@@ -48,7 +48,6 @@ This staging is done in order to:
 4.  VM disks are located in `output` directory
 5.  Output is generated in the following directories:
     1.  `output-<machine-name>` for OVA files.
-    2.  `box` for Vagrant boxes.
 
 Packer templates are grouped through a naming scheme -
 `<category>_<name>.*`. This is a pure syntactical thing used to more
@@ -104,8 +103,8 @@ packer build \
     -var-file=provision-ubuntu-vm/var-files/ubuntu1910-desktop.json \
     provision-ubuntu-vm_rpi-buildroot.json
 packer build \
-    -var-file=export-ubuntu-box/var-files/ubuntu1910-desktop.json \
-    export-ubuntu-box.json
+    -var-file=export-ubuntu-ovf/var-files/ubuntu1910-desktop.json \
+    export-ubuntu-ovf.json
 ```
 
 #### Two Ways of Provisioning VM Components
@@ -145,6 +144,18 @@ This sample also contains an additional configuration var,
 For building up the VM, it is useful to have a shared directory
 attached. So, this template requires specifying a shared directory to be
 mounted to the VM, host path specified as a `shared_folder_path` var.
+
+#### Vagrant Box Export
+
+Vagrant box export is optional. In order to get it, it is necessary to:
+
+1.  Set `install_vagrant_key` to `true` when provisioning the VM.
+2.  Run:
+    ```base
+    packer build \
+        -var-file=export-vagrant-box/var-files/ubuntu1910-desktop.json \
+        export-vagrant-box.json
+    ```
 
 ## [TODO] Contributing
 

@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-SSH_USERNAME=${SSH_USERNAME:-vagrant}
+SSH_USERNAME=${SSH_USERNAME:-vmuser}
 
 function install_open_vm_tools() {
   echo "==> Installing Open VM Tools"

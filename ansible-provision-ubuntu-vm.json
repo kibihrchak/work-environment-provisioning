@@ -43,8 +43,8 @@
   "variables": {
     "json_name": "ansible-provision-ubuntu-vm",
     "headless": "false",
-    "ssh_password": "vagrant",
-    "ssh_username": "vagrant",
+    "ssh_password": "vmuser",
+    "ssh_username": "vmuser",
     "attach_snapshot": "base",
     "target_snapshot": "provisioned",
     "ansible_playbooks": null,

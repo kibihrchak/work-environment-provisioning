@@ -1,5 +1,5 @@
 {
-  "description": "Export given Ubuntu VM as an Vagrant box",
+  "description": "Export given VirtualBox Ubuntu VM as a OVF virtual appliance",
   "builders": [
     {
       "type": "virtualbox-vm",
@@ -37,19 +37,11 @@
       ]
     }
   ],
-  "post-processors": [
-    {
-      "keep_input_artifact": true,
-      "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `version`}}.box",
-      "type": "vagrant",
-      "vagrantfile_template": "{{ user `json_name` }}/vagrantfile-template/{{ user `vagrantfile_template` }}"
-    }
-  ],
   "variables": {
-    "json_name": "export-ubuntu-box",
+    "json_name": "export-ubuntu-ovf",
     "headless": "false",
-    "ssh_password": "vagrant",
-    "ssh_username": "vagrant",
+    "ssh_password": "vmuser",
+    "ssh_username": "vmuser",
     "attach_snapshot": "provisioned",
     "upgrade": "false"
   }

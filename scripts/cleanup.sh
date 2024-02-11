@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-SSH_USER=${SSH_USERNAME:-vagrant}
+SSH_USER=${SSH_USERNAME:-vmuser}
 DISK_USAGE_BEFORE_CLEANUP=$(df -h)
 
 #   [TODO] This may go to export

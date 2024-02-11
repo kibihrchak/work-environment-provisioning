@@ -1,5 +1,5 @@
 {
-  "description": "Provision BBB build of Buildroot on a Ubuntu VM",
+  "description": "Export given VirtualBox Ubuntu VM as a Vagrant box",
   "builders": [
     {
       "type": "virtualbox-vm",
@@ -8,7 +8,6 @@
       "ssh_username": "{{ user `ssh_username` }}",
       "headless": "{{ user `headless` }}",
       "attach_snapshot": "{{ user `attach_snapshot` }}",
-      "target_snapshot": "{{ user `target_snapshot` }}",
       "ssh_wait_timeout": "10000s",
       "skip_export": "true",
       "post_shutdown_delay": "1m",
@@ -18,35 +17,39 @@
   ],
   "provisioners": [
     {
-      "type": "file",
-      "source": "{{ user `json_name` }}/files",
-      "destination": "/tmp"
-    },
-    {
       "type": "shell",
       "expect_disconnect": "true",
       "environment_vars": [
-        "SSH_USERNAME={{user `ssh_username`}}",
-        "SSH_PASSWORD={{user `ssh_password`}}",
-        "UPGRADE={{user `upgrade`}}",
-        "BUILDROOT_VERSION={{user `buildroot_version`}}",
-        "BUILDROOT_ARCHIVE_PATH={{user `buildroot_archive_path`}}"
+        "UPGRADE={{user `upgrade`}}"
       ],
       "scripts": [
-        "scripts/update+upgrade.sh",
-        "{{ user `json_name` }}/scripts/bbb-buildroot.sh"
+        "scripts/update+upgrade.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "expect_disconnect": "true",
+      "scripts": [
+        "scripts/cleanup.sh",
+        "scripts/minimize.sh"
       ]
     }
   ],
+  "post-processors": [
+    {
+      "keep_input_artifact": true,
+      "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `version`}}.box",
+      "type": "vagrant",
+      "vagrantfile_template": "{{ user `json_name` }}/vagrantfile-template/{{ user `vagrantfile_template` }}"
+    }
+  ],
   "variables": {
-    "json_name": "provision-ubuntu-vm",
+    "json_name": "export-ubuntu-ovf",
     "headless": "false",
     "ssh_password": "vmuser",
     "ssh_username": "vmuser",
-    "attach_snapshot": "base",
-    "target_snapshot": "provisioned",
-    "buildroot_version": "2019.11",
-    "buildroot_archive_path": "",
+    "attach_snapshot": "provisioned",
     "upgrade": "false"
   }
 }

@@ -1,0 +1,4 @@
+{
+  "_comment": "Config variables for exporting given Ubuntu VM installation as a OVF virtual appliance",
+  "vm_name": "ubuntu1910-desktop"
+}

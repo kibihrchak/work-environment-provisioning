@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-SSH_USER=${SSH_USERNAME:-vagrant}
+SSH_USER=${SSH_USERNAME:-vmuser}
 SSH_GROUP=$(id -g ${SSH_USER})
 PLAYBOOKS=${ANSIBLE_PLAYBOOKS}
 PLAYBOOKS_DIR_DEFAULT="$(dirname "$0")/../files/playbooks"
