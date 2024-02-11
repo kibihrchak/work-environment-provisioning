@@ -44,14 +44,14 @@ This staging is done in order to:
 3.  Each template (or a template group) has a same-named directory with
     accompanying stuff, as described for the repo root. In addition,
     there is:
-    3.  `var-files` - Machine types.
+    1.  `var-files` - Machine types.
 4.  VM disks are located in `output` directory
 5.  Output is generated in the following directories:
     1.  `output-<machine-name>` for OVA files.
     2.  `box` for Vagrant boxes.
 
 Packer templates are grouped through a naming scheme -
-`<category>_<name>.json`. This is a pure syntactical thing used to more
+`<category>_<name>.*`. This is a pure syntactical thing used to more
 easily find necessary files.
 
 ## Getting Started
@@ -79,7 +79,7 @@ packer build \
     minimum-ubuntu-install_preseed.json
 ```
 
-Same for 18.04
+Same for 18.04 -
 
 ```bash
 packer build \
