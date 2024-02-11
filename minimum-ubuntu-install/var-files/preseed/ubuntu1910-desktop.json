@@ -8,5 +8,5 @@
   "iso_name": "ubuntu-19.10-server-amd64.iso",
   "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/19.10/release/ubuntu-19.10-server-amd64.iso",
   "memory": "2048",
-  "preseed": "ubuntu1910-desktop.cfg"
+  "preseed_file": "preseed.cfg"
 }

@@ -1,5 +1,5 @@
 {
-  "description": "Minimum Ubuntu VM unattended installation",
+  "description": "Minimum Ubuntu VM unattended installation via preseeds",
   "builders": [
     {
       "type": "virtualbox-iso",
@@ -7,7 +7,7 @@
         "{{ user `boot_command_prefix` }}",
         "/install/vmlinuz noapic ",
         "initrd=/install/initrd.gz ",
-        "file=/floppy/{{ user `preseed` }} ",
+        "file=/floppy/{{ user `preseed_file` }} ",
         "debian-installer={{ user `locale` }} auto locale={{ user `locale` }} kbd-chooser/method=us ",
         "hostname={{ user `hostname` }} ",
         "grub-installer/bootdev=/dev/sda<wait> ",
@@ -23,7 +23,7 @@
       ],
       "disk_size": "{{ user `disk_size` }}",
       "floppy_files": [
-        "{{ user `json_name` }}/preseed/{{ user `preseed` }}"
+        "{{ user `json_name` }}/installer-automation/preseed/{{ user `preseed_file` }}"
       ],
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "Ubuntu_64",

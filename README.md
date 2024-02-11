@@ -75,8 +75,8 @@ Example for initial setup Ubuntu 19.10 -
 ```bash
 packer build \
     -var 'shared_folder_path=/c/temp' \
-    -var-file=minimum-ubuntu-install/var-files/ubuntu1910-desktop.json \
-    minimum-ubuntu-install.json
+    -var-file=minimum-ubuntu-install/var-files/preseed/ubuntu1910-desktop.json \
+    minimum-ubuntu-install_preseed.json
 ```
 
 Same for 18.04
@@ -84,8 +84,8 @@ Same for 18.04
 ```bash
 packer build \
     -var 'shared_folder_path=/c/temp' \
-    -var-file=minimum-ubuntu-install/var-files/ubuntu1804-desktop.json \
-    minimum-ubuntu-install.json
+    -var-file=minimum-ubuntu-install/var-files/preseed/ubuntu1804-desktop.json \
+    minimum-ubuntu-install_preseed.json
 ```
 
 These may be followed by setup, and export runs. Here's an example for

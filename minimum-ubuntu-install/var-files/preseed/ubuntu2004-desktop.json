@@ -8,5 +8,5 @@
   "iso_name": "ubuntu-20.04-legacy-server-amd64.iso",
   "iso_url": "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso",
   "memory": "2048",
-  "preseed": "ubuntu2004-desktop.cfg"
+  "preseed_file": "preseed.cfg"
 }
